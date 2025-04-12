@@ -20,39 +20,22 @@ import { defineConfig } from 'vite';
 // });
 
 export default defineConfig(({ mode }) => {
-  if (mode === 'android') {
-    return {
-      base: './',
-      plugins: [react(), legacy({
-        targets: ['> 1%', 'last 2 versions', 'Android >= 4.4', 'Safari >= 10'],
-        renderModernChunks: false
-      })],
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, './src'),
-        },
-        extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
+  var base = {
+    base: './Aurelia',
+    plugins: [react(), legacy({
+      targets: ['> 1%', 'last 2 versions', 'Android >= 4.4', 'Safari >= 10'],
+      renderModernChunks: false
+    })],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
       },
-      assetsInclude: ['assets/**/*'],
-        }
+      extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
+    },
+    assetsInclude: ['assets/**/*'],
   }
 
-  if (mode === 'development') {
-    return {
-      base: './Aurelia',
-      plugins: [react(), legacy({
-        targets: ['> 1%', 'last 2 versions', 'Android >= 4.4', 'Safari >= 10'],
-        renderModernChunks: false
-      })],
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, './src'),
-        },
-        extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
-      },
-      assetsInclude: ['assets/**/*'],
-        }
-    }
+  if (mode === 'android') {base['base'] = './'}
   
-  return {}
+  return base
 });
