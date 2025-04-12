@@ -1,5 +1,5 @@
 import react from '@vitejs/plugin-react';
-import path from 'path';
+import path, { resolve } from 'path';
 import legacy from '@vitejs/plugin-legacy';
 import { defineConfig } from 'vite';
 
@@ -19,9 +19,31 @@ import { defineConfig } from 'vite';
 //   assetsInclude: ['assets/**/*'],
 // });
 
+
+
+// export default defineConfig({
+//   plugins: [react()],
+//   build: {
+//     rollupOptions: {
+//       input: {
+//         main: resolve(__dirname, "index.html"),
+//         404: resolve(__dirname, "public/404.html"),
+//       },
+//     },
+//   },
+// });
+
 export default defineConfig(({ mode }) => {
   var base = {
     base: './Aurelia',
+    build: {
+      rollupOptions: {
+        input: {
+          main: resolve(__dirname, "index.html"),
+          404: resolve(__dirname, "public/404.html"),
+        },
+      },
+    },
     plugins: [react(), legacy({
       targets: ['> 1%', 'last 2 versions', 'Android >= 4.4', 'Safari >= 10'],
       renderModernChunks: false
