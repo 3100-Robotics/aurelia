@@ -2,6 +2,7 @@ import react from '@vitejs/plugin-react';
 import path, { resolve } from 'path';
 import legacy from '@vitejs/plugin-legacy';
 import { defineConfig } from 'vite';
+import commonjs from 'vite-plugin-commonjs';
 
 // https://vitejs.dev/config/
 // export default defineConfig({
@@ -35,7 +36,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(({ mode }) => {
   var base = {
-    base: './Aurelia',
+    base: './aurelia',
     build: {
       rollupOptions: {
         input: {
@@ -44,10 +45,7 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    plugins: [react(), legacy({
-      targets: ['> 1%', 'last 2 versions', 'Android >= 4.4', 'Safari >= 10'],
-      renderModernChunks: false
-    })],
+    plugins: [react(), commonjs()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
