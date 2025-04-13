@@ -36,7 +36,7 @@ import commonjs from 'vite-plugin-commonjs';
 
 export default defineConfig(({ mode }) => {
   var base = {
-    base: './aurelia',
+    base: 'https://3100-robotics.github.io/aurelia',
     build: {
       rollupOptions: {
         input: {
