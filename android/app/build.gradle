@@ -5,6 +5,8 @@ plugins {
     id 'com.github.node-gradle.node'
 }
 
+
+
 android {
     namespace 'com.lt3100.aurelia'
     compileSdk 35
@@ -67,6 +69,7 @@ node {
     // The Node.js project directory location
     // This is where the package.json file and node_modules directory are located
     nodeProjectDir.set(file("../../"))
+    npmInstall.args = ['--legacy-peer-deps']
 }
 
 /**
@@ -74,11 +77,11 @@ node {
  */
 def buildWeb = tasks.register('buildWeb', NpmTask) {
     description = 'Runs vite build'
-    args = ['run', 'build']
+    args = ['run', 'build-android']
     doFirst {
         println 'Executing `npm run build` in ../../web'
     }
-//    dependsOn npmInstall
+    dependsOn npmInstall
 }
 
 /**
@@ -106,7 +109,7 @@ def copyDistToAssets = tasks.register('copyDistToAssets', Copy) {
     from '../../dist'
     into 'src/main/assets/dist'
     dependsOn buildWeb
-    dependsOn cleanAssets
+//    dependsOn cleanAssets
 }
 
 /**
@@ -114,6 +117,8 @@ def copyDistToAssets = tasks.register('copyDistToAssets', Copy) {
  */
 tasks.named("preBuild") {
 //    dependsOn copyDistToAssets
+    dependsOn buildWeb
+//    dependsOn cleanAssets
 }
 
 /**

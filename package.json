@@ -8,6 +8,7 @@
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build --mode gh-pages",
+    "build-android": "tsc && vite build --mode android && powershell -Command \" Copy-Item -Path \"./dist\" -Destination \"./android/app/src/main/assets/dist\" -Recurse -Force \"",
     "preview": "vite preview",
     "schema": "ts-node src/scripts/generateJsonSchema.ts src/assets/schema.json && cp src/assets/schema.json public/schema.json"
   },
