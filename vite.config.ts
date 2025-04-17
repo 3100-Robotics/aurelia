@@ -19,6 +19,20 @@ import commonjs from 'vite-plugin-commonjs';
 //   assetsInclude: ['assets/**/*'],
 // });
 
+
+
+// export default defineConfig({
+//   plugins: [react()],
+//   build: {
+//     rollupOptions: {
+//       input: {
+//         main: resolve(__dirname, "index.html"),
+//         404: resolve(__dirname, "public/404.html"),
+//       },
+//     },
+//   },
+// });
+
 export default defineConfig(({ mode }) => {
   var base = {
     base: 'https://3100-robotics.github.io/aurelia',
@@ -31,15 +45,16 @@ export default defineConfig(({ mode }) => {
       },
     },
     plugins: [react(), commonjs()],
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, './src'),
-        },
-        extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
       },
-      assetsInclude: ['assets/**/*'],
-        }
+      extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
+    },
+    assetsInclude: ['assets/**/*'],
+  }
   if (mode === 'android') {base['base'] = './'}
 
+  
   return base
 });
