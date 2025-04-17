@@ -7,6 +7,7 @@ import {
   fetchConfigFromURL,
   getConfig,
   resetToDefaultConfig,
+  resettonewconf,
   setConfig,
   useQRScoutState,
 } from '../store/store';
@@ -169,6 +170,9 @@ export function ConfigEditor(props: ConfigEditorProps) {
             <DropdownMenuContent>
               <DropdownMenuItem onClick={() => resetToDefaultConfig()}>
                 Reset To Default Config
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => resettonewconf()}>
+                Reset To Better config
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => downloadConfig(config)}>
                 Download Config

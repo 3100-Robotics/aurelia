@@ -1,0 +1,514 @@
+{
+    "title": "Aurelia",
+    "page_title": "Reefscape",
+    "delimiter": "\t",
+    "teamNumber": 3100,
+    "theme": {
+        "light": {
+        "background": "0 0% 100%",
+        "foreground": "0 0% 3.9%",
+        "card": "0 0% 100%",
+        "card_foreground": "0 0% 3.9%",
+        "popover": "0 0% 100%",
+        "popover_foreground": "0 0% 3.9%",
+        "primary": "116 33% 42%",
+        "primary_foreground": "0 85.7% 97.3%",
+        "secondary": "0 0% 96.1%",
+        "secondary_foreground": "0 0% 9%",
+        "muted": "0 0% 96.1%",
+        "muted_foreground": "0 0% 45.1%",
+        "accent": "0 0% 96.1%",
+        "accent_foreground": "0 0% 9%",
+        "destructive": "0 84.2% 60.2%",
+        "destructive_foreground": "0 0% 98%",
+        "border": "0 0% 89.8%",
+        "input": "0 0% 89.8%",
+        "ring": "116 64% 13%",
+        "chart_1": "116 41% 43%",
+        "chart_2": "116 41% 43%",
+        "chart_3": "116 41% 43%",
+        "chart_4": "116 41% 43%",
+        "chart_5": "116 41% 43%"
+        },
+        "dark": {
+        "background": "0 0% 3.9%",
+        "foreground": "0 0% 98%",
+        "card": "0 0% 3.9%",
+        "card_foreground": "0 0% 98%",
+        "popover": "0 0% 3.9%",
+        "popover_foreground": "0 0% 98%",
+        "primary": "116 33% 42%",
+        "primary_foreground": "0 85.7% 97.3%",
+        "secondary": "0 0% 14.9%",
+        "secondary_foreground": "0 0% 98%",
+        "muted": "0 0% 14.9%",
+        "muted_foreground": "0 0% 63.9%",
+        "accent": "0 0% 14.9%",
+        "accent_foreground": "0 0% 98%",
+        "destructive": "0 62.8% 30.6%",
+        "destructive_foreground": "0 0% 98%",
+        "border": "0 0% 14.9%",
+        "input": "0 0% 14.9%",
+        "ring": "116 64% 13%",
+        "chart_1": "116 41% 43%",
+        "chart_2": "116 41% 43%",
+        "chart_3": "116 41% 43%",
+        "chart_4": "116 41% 43%",
+        "chart_5": "116 41% 43%"
+        }
+    },
+    "sections": [
+      {
+        "name": "Prematch",
+        "fields": [
+          {
+            "title": "Scouter Initials",
+            "description": "Enter the initials of the scouter.",
+            "type": "text",
+            "required": true,
+            "code": "scouter",
+            "formResetBehavior": "preserve",
+            "defaultValue": ""
+          },
+          {
+            "title": "Match Number",
+            "description": "Enter the match number.",
+            "type": "number",
+            "required": true,
+            "code": "matchNumber",
+            "formResetBehavior": "increment",
+            "defaultValue": 1
+          },
+          {
+            "title": "Robot",
+            "description": "The robot you are scouting this match, based on driver station position.",
+            "type": "select",
+            "required": true,
+            "code": "robot",
+            "formResetBehavior": "preserve",
+            "defaultValue": "R1",
+            "choices": {
+              "R1": "Red 1",
+              "R2": "Red 2",
+              "R3": "Red 3",
+              "B1": "Blue 1",
+              "B2": "Blue 2",
+              "B3": "Blue 3"
+            }
+          },
+          {
+            "title": "Team Number",
+            "description": "The team number of the robot you're scouting.",
+            "type": "number",
+            "required": true,
+            "code": "teamNumber",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "max": 19999
+          },
+          {
+            "title": "Starting Position",
+            "description": "The starting position of the robot.",
+            "type": "select",
+            "required": true,
+            "code": "Prsp",
+            "formResetBehavior": "reset",
+            "defaultValue": "",
+            "choices": {
+              "RB": "Red Barge",
+              "M": "Middle",
+              "BB": "Blue Barge"
+            }
+          },
+          {
+            "title": "No Show",
+            "description": "Check if the robot did not show up for the match.",
+            "type": "boolean",
+            "required": false,
+            "code": "noShow",
+            "formResetBehavior": "reset",
+            "defaultValue": false
+          }
+        ]
+      },
+      {
+        "name": "Autonomous",
+        "fields": [
+          {
+            "title": "Moved? (Drove off starting line during auto)",
+            "description": "Check if the robot moved during autonomous.",
+            "type": "select",
+            "required": true,
+            "code": "Mved",
+            "formResetBehavior": "reset",
+            "defaultValue": "",
+            "choices": {
+              "FALSE": "Did not move",
+              "TRUE": "Moved"
+            }
+          },
+          {
+            "title": "Coral L1 Scored",
+            "description": "The number of level 1 coral scored during autonomous.",
+            "type": "counter",
+            "required": false,
+            "code": "CLOA",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1,
+          "icon": "coral"
+          },
+          {
+            "title": "Coral L2 Scored",
+            "description": "The number of level 2 coral scored during autonomous.",
+            "type": "counter",
+            "required": false,
+            "code": "CLTA",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1,
+          "icon": "coral"
+          },
+          {
+            "title": "Coral L3 Scored",
+            "description": "The number of level 3 coral scored during autonomous.",
+            "type": "counter",
+            "required": false,
+            "code": "CLThA",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1,
+          "icon": "coral"
+          },
+          {
+            "title": "Coral L4 Scored",
+            "description": "The number of level 4 coral scored during autonomous.",
+            "type": "counter",
+            "required": false,
+            "code": "CLFA",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1,
+          "icon": "coral"
+          },
+          {
+            "title": "Auto Coral Missed/Dropped",
+            "description": "The number of coral dropped or missed in autonomous",
+            "type": "counter",
+            "required": false,
+            "code": "ACMD",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1,
+          "icon": "coral"
+          },
+          {
+            "title": "Barge Algae Scored",
+            "description": "The number of Algae scored in the barge during autonomous.",
+            "type": "counter",
+            "required": false,
+            "code": "BASA",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1,
+          "icon": "algae"
+          },
+          {
+            "title": "Processor Algae Scored",
+            "description": "The number of Algae scored in the processor during autonomous.",
+            "type": "counter",
+            "required": false,
+            "code": "PASA",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1,
+          "icon": "algae"
+          },
+          {
+            "title": "Dislodged Algae?",
+            "description": "Whether or not algae was dislodged during autonomous.",
+            "type": "boolean",
+            "required": false,
+            "code": "daT",
+            "formResetBehavior": "reset",
+            "defaultValue": false,
+          "icon": "algae"
+          },
+          {
+            "title": "Auto Foul",
+            "type": "counter",
+            "required": false,
+            "code": "auf",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1
+          }
+        ]
+      },
+      {
+        "name": "Teleop",
+        "fields": [
+          {
+            "title": "Dislodged Algae?",
+            "type": "boolean",
+            "required": false,
+            "code": "daT",
+            "formResetBehavior": "reset",
+            "defaultValue": false,
+          "icon": "algae"
+          },
+          {
+            "title": "Coral Pickup Location",
+            "type": "select",
+            "required": false,
+            "code": "TGPL",
+            "formResetBehavior": "reset",
+            "defaultValue": "",
+            "choices": {
+              "None": "None",
+              "Ground": "Ground",
+              "HP": "Human Player",
+              "Both": "Both"
+            },
+            "icon": "coral"
+          },
+          {
+            "title": "Algae Pickup Location",
+            "type": "multi-select",
+            "required": false,
+            "code": "ALGPL",
+            "formResetBehavior": "reset",
+            "choices": {
+              "None": "None",
+              "Ground": "Ground",
+              "CL": "Coral Lollipop",
+              "Reef": "Reef"
+            },
+            "icon": "algae"
+          },
+          {
+            "title": "Coral L1 Scored",
+            "description": "The number of level 1 coral scored during teleop.",
+            "type": "counter",
+            "required": false,
+            "code": "CLOT",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1,
+            "icon": "coral"
+          },
+          {
+            "title": "Coral L2 Scored",
+            "description": "The number of level 2 coral scored during teleop.",
+            "type": "counter",
+            "required": false,
+            "code": "CLTT",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1,
+            "icon": "coral"
+          },
+          {
+            "title": "Coral L3 Scored",
+            "description": "The number of level 3 coral scored during teleop.",
+            "type": "counter",
+            "required": false,
+            "code": "CLThT",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1,
+            "icon": "coral"
+          },
+          {
+            "title": "Coral L4 Scored",
+            "description": "The number of level 4 coral scored during teleop.",
+            "type": "counter",
+            "required": false,
+            "code": "CLFT",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1,
+            "icon": "coral"
+          },
+          {
+            "title": "Game Pieces Missed/Dropped",
+            "description": "The number of coral missed or dropped during teleop.",
+            "type": "counter",
+            "required": false,
+            "code": "GPMD",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1
+          },
+          {
+            "title": "Barge Algae Scored",
+            "description": "The number of Algae scored in the barge during teleop.",
+            "type": "counter",
+            "required": false,
+            "code": "BAST",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1,
+            "icon": "algae"
+          },
+          {
+            "title": "Processor Algae Scored",
+            "description": "The number of Algae scored in the processor during teleop.",
+            "type": "counter",
+            "required": false,
+            "code": "PAST",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "min": 0,
+            "step": 1,
+            "icon": "algae"
+          },
+          {
+            "title": "Crossed Field/Played Defense?",
+            "type": "boolean",
+            "required": false,
+            "code": "CFPDT",
+            "formResetBehavior": "reset",
+            "defaultValue": false
+          },
+          {
+            "title": "Tele Fouls",
+            "type": "counter",
+            "required": false,
+            "code": "Fou/Tech",
+            "formResetBehavior": "reset",
+            "defaultValue": 0,
+            "step": 1
+          }
+        ]
+      },
+      {
+        "name": "Endgame",
+        "fields": [
+          {
+            "title": "End Position",
+            "type": "select",
+            "required": true,
+            "code": "epo",
+            "formResetBehavior": "reset",
+            "defaultValue": "No",
+            "choices": {
+              "No": "Not Parked",
+              "P": "Parked",
+              "Sc": "Shallow Climb",
+              "Dc": "Deep Climb",
+              "Fsc": "Failed Shallow Climb",
+              "Fdc": "Failed Deep Climb"
+            }
+          },
+          {
+            "title": "Did another team play defense on them?",
+            "type": "boolean",
+            "required": false,
+            "code": "DEFEg",
+            "formResetBehavior": "reset",
+            "defaultValue": false
+          }
+        ]
+      },
+      {
+        "name": "Postmatch",
+        "fields": [
+          {
+            "title": "Defensive Skill",
+            "type": "select",
+            "required": false,
+            "code": "dr",
+            "formResetBehavior": "reset",
+            "defaultValue": "0",
+            "choices": {
+              "0": "0 (did not play defense)",
+              "1": "1 (played ineffective and/or poor defense)",
+              "2": "2 (played mediocre defense)",
+              "3": "3 (played good defense)",
+              "4": "4 (played great defense)"
+            }
+          },
+          {
+            "title": "Yellow/Red Card",
+            "type": "select",
+            "required": true,
+            "code": "yc",
+            "formResetBehavior": "reset",
+            "defaultValue": "No Card",
+            "choices": {
+              "No Card": "No Card",
+              "Yellow": "Yellow Card",
+              "Red": "Red Card"
+            }
+          },
+          {
+            "title": "Disabled, Died, etc",
+            "type": "multi-select",
+            "required": true,
+            "code": "FDe",
+            "formResetBehavior": "reset",
+            "choices": {
+              "No Problems": "No Problems",
+              "Brown Out": "Browned Out",
+              "E/A Stop": "E-Stop or A-Stop",
+              "Tipped": "Tipped",
+              "Died": "Died/Disabled",
+              "Died and came back": "Died and Came Back",
+              "Coral Stuck 10": "Coral Stuck (less than 10 seconds)",
+              "Coral Stuck +": "Coral Stuck (more than 10 seconds)",
+              "Drove Over Algae": "Drove on algae and got stuck",
+              "Other": "Other issue"
+            }
+          },
+          {
+            "title": "Comments",
+            "type": "text",
+            "required": false,
+            "code": "co",
+            "formResetBehavior": "reset",
+            "defaultValue": "",
+            "min": 0,
+            "max": 5000
+          },
+          {
+            "title": "Tags",
+            "type": "multi-select",
+            "required": false,
+            "code": "tags",
+            "formResetBehavior": "reset",
+            "choices": {
+              "None": "None",
+              "ABFR": "Scored algae in net/barge from the reef",
+              "ABFG": "Scored algae in net/barge from the ground",
+              "Good Defense": "Good Defense",
+              "Good Driving": "Good Driving",
+              "Ineffective Defense": "Ineffective Defense",
+              "Ineffective Driving": "Ineffective Driving",
+              "Slow Driving": "Slow Driving",
+              "Coral Dropped": "Coral Dropped",
+              "Algae Dropped": "Algae Dropped",
+              "Clumsy": "Clumsy",
+              "Slow Intake": "Slow Intake",
+              "Slow Scoring": "Slow Scoring"
+            }
+          }
+        ]
+      }
+    ]
+  }

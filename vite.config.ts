@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
 
   if (mode === 'development') {
     return {
-      base: './Aurelia',
+      base: '/Aurelia',
       plugins: [react(), legacy({
         targets: ['> 1%', 'last 2 versions', 'Android >= 4.4', 'Safari >= 10'],
         renderModernChunks: false
