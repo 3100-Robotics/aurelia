@@ -7,7 +7,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
-    "build": "tsc && vite build ",
+    "build": "tsc && vite build --mode gh-pages",
+    "build-android": "tsc && vite build --mode android && powershell -Command \" Copy-Item -Path \"./dist\" -Destination \"./android/app/src/main/assets/dist\" -Recurse -Force \"",
     "preview": "vite preview",
     "schema": "ts-node src/scripts/generateJsonSchema.ts src/assets/schema.json && cp src/assets/schema.json public/schema.json"
   },
@@ -30,10 +31,9 @@
     "@statsig/react-bindings": "^3.8.1",
     "@statsig/session-replay": "^3.8.1",
     "@statsig/web-analytics": "^3.8.1",
-    "@vitejs/plugin-react": "^4.3.4",
     "@vitejs/plugin-legacy": "6.0.2",
+    "@vitejs/plugin-react": "^4.3.4",
     "class-variance-authority": "^0.7.1",
-    "terser": "5.39.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "immer": "^10.1.1",
@@ -46,8 +46,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "systemjs": "^6.15.1",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
+    "terser": "5.39.0",
     "vaul": "^1.1.1",
     "zod": "^3.24.1",
     "zod-to-json-schema": "^3.24.1",
@@ -66,6 +68,7 @@
     "tailwindcss": "^3.4.16",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2",
-    "vite": "^5.4.11"
+    "vite": "^5.4.11",
+    "vite-plugin-commonjs": "^0.10.4"
   }
 }

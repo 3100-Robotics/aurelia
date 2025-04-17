@@ -3,6 +3,7 @@ package com.lt3100.aurelia
 import android.net.http.SslError
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import android.webkit.ConsoleMessage
 import android.webkit.SslErrorHandler
@@ -54,6 +55,7 @@ fun ComposeWrappedWebView() {
                 .build()
 
             WebView(context).apply {
+                overScrollMode = View.OVER_SCROLL_NEVER
                 layoutParams = ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT

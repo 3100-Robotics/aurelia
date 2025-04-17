@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react';
-import path from 'path';
-import legacy from '@vitejs/plugin-legacy';
+import path, { resolve } from 'path';
 import { defineConfig } from 'vite';
+import commonjs from 'vite-plugin-commonjs';
 
 // https://vitejs.dev/config/
 // export default defineConfig({
@@ -20,13 +20,17 @@ import { defineConfig } from 'vite';
 // });
 
 export default defineConfig(({ mode }) => {
-  if (mode === 'android') {
-    return {
-      base: './',
-      plugins: [react(), legacy({
-        targets: ['> 1%', 'last 2 versions', 'Android >= 4.4', 'Safari >= 10'],
-        renderModernChunks: false
-      })],
+  var base = {
+    base: 'https://3100-robotics.github.io/aurelia',
+    build: {
+      rollupOptions: {
+        input: {
+          main: resolve(__dirname, "index.html"),
+          404: resolve(__dirname, "public/404.html"),
+        },
+      },
+    },
+    plugins: [react(), commonjs()],
       resolve: {
         alias: {
           '@': path.resolve(__dirname, './src'),
@@ -35,24 +39,7 @@ export default defineConfig(({ mode }) => {
       },
       assetsInclude: ['assets/**/*'],
         }
-  }
+  if (mode === 'android') {base['base'] = './'}
 
-  if (mode === 'development') {
-    return {
-      base: '/Aurelia',
-      plugins: [react(), legacy({
-        targets: ['> 1%', 'last 2 versions', 'Android >= 4.4', 'Safari >= 10'],
-        renderModernChunks: false
-      })],
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, './src'),
-        },
-        extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
-      },
-      assetsInclude: ['assets/**/*'],
-        }
-    }
-  
-  return {}
+  return base
 });
