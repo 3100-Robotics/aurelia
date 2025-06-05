@@ -33,6 +33,7 @@ export const stringInputSchema = inputBaseSchema.extend({
   type: z.literal('text'),
   min: z.number().optional().describe('The minimum length of the string'),
   max: z.number().optional().describe('The maximum length of the string'),
+  resizeable: z.boolean().optional().default(true).describe('Wether the text box is resizeable'),
   defaultValue: z.string().default('').describe('The default value'),
 });
 

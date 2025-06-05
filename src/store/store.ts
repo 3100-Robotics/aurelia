@@ -1,7 +1,6 @@
 import { produce } from 'immer';
 import { cloneDeep } from 'lodash';
 import configJson from '../../config/2025/config.json';
-import newConf from '../../config/2025/configbetter.json';
 import {
   Config,
   configSchema,
@@ -20,14 +19,14 @@ function getDefaultConfig(): Config {
   return config.data;
 }
 
-function getNewConf(): Config {
-  const config = configSchema.safeParse(newConf);
-  if (!config.success) {
-    console.error(config.error);
-    throw new Error('Invalid config schema');
-  }
-  return config.data;
-}
+// function getNewConf(): Config {
+//   const config = configSchema.safeParse(newConf);
+//   if (!config.success) {
+//     console.error(config.error);
+//     throw new Error('Invalid config schema');
+//   }
+//   return config.data;
+// }
 
 export function getConfig() {
   const configData = cloneDeep(useQRScoutState.getState().formData);
@@ -50,14 +49,14 @@ const initialState: QRScoutState = {
   id: ""
 };
 
-const newInitialState: QRScoutState = {
-  formData: getNewConf(),
-  fieldValues: getNewConf().sections.flatMap(s =>
-    s.fields.map(f => ({ code: f.code, value: f.defaultValue })),
-  ),
-  showQR: false,
-  id: ""
-};
+// const newInitialState: QRScoutState = {
+//   formData: getNewConf(),
+//   fieldValues: getNewConf().sections.flatMap(s =>
+//     s.fields.map(f => ({ code: f.code, value: f.defaultValue })),
+//   ),
+//   showQR: false,
+//   id: ""
+// };
 
 export const useQRScoutState = createStore<QRScoutState>(
   initialState,
@@ -71,9 +70,9 @@ export function resetToDefaultConfig() {
   useQRScoutState.setState(initialState);
 }
 
-export function resettonewconf() {
-  useQRScoutState.setState(newInitialState);
-}
+// export function resettonewconf() {
+//   useQRScoutState.setState(newInitialState);
+// }
 
 export async function fetchConfigFromURL(url: string): Promise<Result<void>> {
   try {

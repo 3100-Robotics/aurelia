@@ -66,7 +66,7 @@ export default function CounterInput(props: ConfigurableInputProps) {
       <Button variant="outline" onClick={() => handleChange(-(data.step || 1))}>
         <Minus />
       </Button>
-      <div className={'border border-input bg-background shadow-sm inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0'}>
+      <div className='inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors    focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm     h-9 px-4 py-2'>
         <h2 className="px-4 text-2xl dark:text-white">{value}</h2>
       </div>
       <Button variant="outline" onClick={() => handleChange(data.step || 1)}>

@@ -68,7 +68,8 @@
           "required": true,
           "code": "scouter",
           "formResetBehavior": "preserve",
-          "defaultValue": ""
+          "defaultValue": "",
+          "resizeable": false
         },
         {
           "title": "Match Number",

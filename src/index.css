@@ -89,13 +89,17 @@ body {
   }
 }
 
+
+
 div.algae[data-type="img"] {
   content:url('./assets/algae.svg');
+  float: right;
 }
 
 div.coral[data-type="img"] {
   content:url('./assets/coral.svg');
   filter: invert();
+  float: right;
 }
 
 div.algae[data-type="bg"] {

@@ -26,7 +26,12 @@ export function App() {
               <Sections />
               <CommitAndResetSection />
               <ConfigSection />
-              <DevPanel />
+
+              {import.meta.env.DEV === true && (
+                <>
+                  <DevPanel />
+                </>
+              )}
             </div>
           </form>
         </main>

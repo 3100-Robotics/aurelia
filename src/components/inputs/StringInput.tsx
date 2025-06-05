@@ -60,6 +60,7 @@ export default function StringInput(props: ConfigurableInputProps) {
       id={`${data.title}_input`}
       onChange={handleChange}
       value={value}
+      style={{resize: data.resizeable ? "both" : "none"}}
       maxLength={data.max}
       minLength={data.min}
     />

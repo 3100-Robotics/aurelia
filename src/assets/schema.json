@@ -261,6 +261,11 @@
                       "type": "number",
                       "description": "The step value",
                       "default": 1
+                    },
+                    "icon": {
+                      "type": "string",
+                      "description": "Icon name",
+                      "default": ""
                     }
                   },
                   "required": [
@@ -308,6 +313,10 @@
                     "max": {
                       "type": "number",
                       "description": "The maximum length of the string"
+                    },
+                    "resizeable": {
+                      "type": "boolean",
+                      "description": "Wether of not the text box is resizeable"
                     }
                   },
                   "required": [

@@ -37,12 +37,11 @@ export default function FormSection(props: SectionProps) {
             code={input.code}
             type={input.type}
           />
-            {input.icon !== undefined && (
-              <>
-                <div data-type='img' className={input.icon} />
-              </>
-            )}
-          {/* <Heart className="text-primary size-8 fill-primary" /> */}
+
+          {input.icon !== undefined && (
+              <div data-type='img' className={input.icon} />
+          )}
+
           </div>
         </InputCard>
       ))}
